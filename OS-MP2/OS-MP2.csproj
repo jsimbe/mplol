@@ -82,6 +82,7 @@
     <Compile Include="RR.cs" />
     <Compile Include="Scheduler.cs" />
     <Compile Include="ISchedulerBehaviour.cs" />
+    <Compile Include="SJN.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

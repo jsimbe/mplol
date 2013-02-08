@@ -6,14 +6,13 @@ using System.Diagnostics;
 
 namespace OS_MP2
 {
-    class RR : ISchedulerBehaviour
+    class SJN : ISchedulerBehaviour
     {
-        //Like fcfs but preempt job after N cycles.
-        static int quantum = 0;
+        //preempt if waiting job is shorter than current job.
+        //process by arrival time.
 
         public void Simulate(List<Job> jobList, List<Job> waitingQueue, ref Job currentJob, int time)
         {
-            const int SLICE = 4;
             if (jobList.Count != 0)
             {
                 Job readyJob = jobList[0];
@@ -31,27 +30,27 @@ namespace OS_MP2
                     jobList.Remove(readyJob);
                 }
             }
+
             if (currentJob != null)
             {
-                
                 currentJob.Cycle--;
-                
-                
-                if (currentJob.Cycle < 0 || quantum == SLICE)
+                if (currentJob.Cycle < 0)
                 {
-                    quantum = 0;
-                    if (currentJob.Cycle >= 0)
-                    {
-                        //hackish
-                        currentJob.Cycle++;
-                        waitingQueue.Add(currentJob);
-                    }
                     currentJob = waitingQueue.First();
                     waitingQueue.Remove(waitingQueue.First());
                     currentJob.Cycle--;
                 }
-                Debug.WriteLine("quantum: " + quantum);
-                quantum++; 
+                if (waitingQueue.Count > 0)
+                {
+                    if (currentJob.Cycle > waitingQueue.First().Cycle)
+                    {
+                        waitingQueue.Add(currentJob);
+                        currentJob = waitingQueue.First();
+                        waitingQueue.Remove(currentJob);
+                        currentJob.Cycle--;
+                    }
+                }
+
             }
 
             //tests

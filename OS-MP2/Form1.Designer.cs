@@ -36,6 +36,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.lblJobs = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvJobs
@@ -78,7 +82,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(112, 341);
+            this.button1.Location = new System.Drawing.Point(112, 393);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -87,7 +91,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(300, 341);
+            this.btnNext.Location = new System.Drawing.Point(300, 393);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 2;
@@ -97,24 +101,55 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(474, 341);
+            this.button3.Location = new System.Drawing.Point(474, 393);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 3;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.lblJobs);
+            this.panel1.Controls.Add(this.lblTime);
+            this.panel1.Location = new System.Drawing.Point(12, 301);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(646, 60);
+            this.panel1.TabIndex = 4;
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(21, 12);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(35, 13);
+            this.lblTime.TabIndex = 0;
+            this.lblTime.Text = "label1";
+            // 
+            // lblJobs
+            // 
+            this.lblJobs.AutoSize = true;
+            this.lblJobs.Location = new System.Drawing.Point(21, 37);
+            this.lblJobs.Name = "lblJobs";
+            this.lblJobs.Size = new System.Drawing.Size(35, 13);
+            this.lblJobs.TabIndex = 1;
+            this.lblJobs.Text = "label1";
+            // 
             // MP2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(670, 447);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lvJobs);
             this.Name = "MP2";
             this.Text = "Form1";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -129,6 +164,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblJobs;
+        private System.Windows.Forms.Label lblTime;
     }
 }
 

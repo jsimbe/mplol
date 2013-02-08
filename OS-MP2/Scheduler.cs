@@ -11,6 +11,8 @@ namespace OS_MP2
         List<Job> waitingQueue = new List<Job>();
         List<Job> jobList = new List<Job>();
         Job currentJob;
+        public string timeline = "";
+        public string jobTimeLine = "";
         static int time = 0;
         public ISchedulerBehaviour SchedulerBehaviour;
 
@@ -29,32 +31,44 @@ namespace OS_MP2
                 index++;
 
             }
-
-            //hackish
-            currentJob = jobList.First();
-            jobList.Remove(currentJob);
-
-
         }
+         
 
         public void Simulate()
         {
+            //hackish
+            currentJob = jobList.First();
+            jobList.Remove(currentJob);
             
-            while (jobList.Count > 0 || waitingQueue.Count > 0)
+            while ((jobList.Count > 0 || waitingQueue.Count > 0) || currentJob.Cycle > 0)
             {
+                
                 if (currentJob.JobType == "N")
+                {
+                    
+                    this.SchedulerBehaviour = new SJN();
+                    Debug.WriteLine("now using shortest job next algorithm!");
+
+                }
+                else if (currentJob.JobType == "NPR")
+                {
+                    this.SchedulerBehaviour = new FCFS();
+                    Debug.WriteLine("now using first come, first served algorithm!");
+                }
+                else
                 {
                     this.SchedulerBehaviour = new RR();
                     Debug.WriteLine("now using round robin algorithm!");
 
                 }
-                else
-                {
-                    this.SchedulerBehaviour = new FCFS();
-                    Debug.WriteLine("now using first come, first served algorithm!");
-                }
+                
+               
+
                 SchedulerBehaviour.Simulate(jobList, waitingQueue, ref currentJob, time);
                 time++;
+
+                timeline += time.ToString() + " ";
+                jobTimeLine += currentJob.JobNumber.ToString() + " ";
 
                 Debug.WriteLine("current job on scheduler: " + currentJob.JobNumber + " remaining cycle: " + currentJob.Cycle);
                 if (waitingQueue.Count > 0)

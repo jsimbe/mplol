@@ -46,12 +46,18 @@ namespace OS_MP2
                 lvJobs.Items.Add(lvi);
 
             }
+
+            lblTime.Text = "";
+            lblJobs.Text = "";
+
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
             
             s.Simulate();
+            lblTime.Text = s.timeline;
+            lblJobs.Text = s.jobTimeLine;
         }
     }
 }

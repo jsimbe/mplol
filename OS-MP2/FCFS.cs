@@ -8,12 +8,14 @@ namespace OS_MP2
 {
     class FCFS : ISchedulerBehaviour
     {
+        //basic alg
+        //take job from joblist
+        //process the job if processor is idle
+        //else put job on waiting queue.
+        //non-preemptive. process job by arrival time.
 
         public void Simulate(List<Job> jobList, List<Job> waitingQueue,ref Job currentJob, int time)
         {
-            
-          
-           
             if (jobList.Count != 0)
             {
                 Job readyJob = jobList[0];
