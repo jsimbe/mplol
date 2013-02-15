@@ -50,6 +50,8 @@
             this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
+            this.lblAvgTAT = new System.Windows.Forms.Label();
+            this.lblAvgWaitingTime = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -232,11 +234,31 @@
             this.columnHeader8.Text = "Response Time";
             this.columnHeader8.Width = 94;
             // 
+            // lblAvgTAT
+            // 
+            this.lblAvgTAT.AutoSize = true;
+            this.lblAvgTAT.Location = new System.Drawing.Point(521, 254);
+            this.lblAvgTAT.Name = "lblAvgTAT";
+            this.lblAvgTAT.Size = new System.Drawing.Size(35, 13);
+            this.lblAvgTAT.TabIndex = 13;
+            this.lblAvgTAT.Text = "label4";
+            // 
+            // lblAvgWaitingTime
+            // 
+            this.lblAvgWaitingTime.AutoSize = true;
+            this.lblAvgWaitingTime.Location = new System.Drawing.Point(572, 254);
+            this.lblAvgWaitingTime.Name = "lblAvgWaitingTime";
+            this.lblAvgWaitingTime.Size = new System.Drawing.Size(35, 13);
+            this.lblAvgWaitingTime.TabIndex = 14;
+            this.lblAvgWaitingTime.Text = "label5";
+            // 
             // MP2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 478);
+            this.Controls.Add(this.lblAvgWaitingTime);
+            this.Controls.Add(this.lblAvgTAT);
             this.Controls.Add(this.lvCompute);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.txtJobType);
@@ -250,7 +272,7 @@
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.lvJobs);
             this.Name = "MP2";
-            this.Text = "Form1";
+            this.Text = "MP2 | Linux Job Scheduler";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -282,6 +304,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.Label lblAvgTAT;
+        private System.Windows.Forms.Label lblAvgWaitingTime;
     }
 }
 

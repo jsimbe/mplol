@@ -16,6 +16,9 @@ namespace OS_MP2
         public string jobTimeLine = "";
         static int time = 0;
         public ISchedulerBehaviour SchedulerBehaviour;
+        public double AvgTAT = 0.0;
+        public double AvgWaitingTime = 0.0;
+        public double AvgResponseTime = 0.0;
 
         public void jobInit()
         {
@@ -107,6 +110,10 @@ namespace OS_MP2
                 j.TurnaroundTime = j.TimeFinished - j.ArrivalTime;
                 j.WatingTime = j.TurnaroundTime - j.OriginalCycle;
             }
+            double TATSum = jobsFinished.Sum(j => j.TurnaroundTime);
+            AvgTAT = TATSum / jobsFinished.Count;
+            double waitingTimeSum = jobsFinished.Sum(j => j.WatingTime);
+            AvgWaitingTime = waitingTimeSum / jobsFinished.Count;
         }
         public List<Job> GetJobList()
         {

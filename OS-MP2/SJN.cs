@@ -22,6 +22,11 @@ namespace OS_MP2
                     {
                         currentJob = readyJob;
                     }
+                    else if (readyJob.JobType != "N")
+                    {
+                        waitingQueue.Add(currentJob);
+                        currentJob = readyJob;
+                    }
                     else
                     {
                         waitingQueue.Add(readyJob);
@@ -44,13 +49,30 @@ namespace OS_MP2
                 }
                 if (waitingQueue.Count > 0)
                 {
-                    if (currentJob.Cycle > waitingQueue.First().Cycle)
+                    if(waitingQueue.Any(j => j.JobType != "N"))
                     {
                         waitingQueue.Add(currentJob);
-                        currentJob = waitingQueue.First();
+                        currentJob = waitingQueue.FirstOrDefault(j => j.JobType != "N");
                         waitingQueue.Remove(currentJob);
                         currentJob.Cycle--;
                     }
+                    else
+                    {
+                        waitingQueue.Sort(delegate(Job j1, Job j2)
+                        {
+                            return j1.Cycle.CompareTo(j2.Cycle);
+                        });
+
+                        if (currentJob.Cycle > waitingQueue.First().Cycle)
+                        {
+                            waitingQueue.Add(currentJob);
+                            currentJob = waitingQueue.First();
+                            waitingQueue.Remove(currentJob);
+                            currentJob.Cycle--;
+                        }
+                    }
+                  
+                     
                 }
 
             }

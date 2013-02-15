@@ -51,9 +51,19 @@ namespace OS_MP2
                        
                         currentJob.TimeFinished = time;
                     }
-                    currentJob = waitingQueue.First();
-                    waitingQueue.Remove(waitingQueue.First());
-                    currentJob.Cycle--;
+                    if (waitingQueue.Any(j => j.JobType != "N"))
+                    {
+                        currentJob = waitingQueue.FirstOrDefault(j => j.JobType != "N");
+                        waitingQueue.Remove(currentJob);
+                        currentJob.Cycle--;
+                    }
+                    else
+                    {
+                        currentJob = waitingQueue.First();
+                        waitingQueue.Remove(waitingQueue.First());
+                        currentJob.Cycle--;
+                    }
+                    
                 }
                 Debug.WriteLine("quantum: " + quantum);
                 quantum++; 

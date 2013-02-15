@@ -73,6 +73,9 @@ namespace OS_MP2
                 lvCompute.Items.Add(lvi);
 
             }
+
+            lblAvgTAT.Text = s.AvgTAT.ToString();
+            lblAvgWaitingTime.Text = s.AvgWaitingTime.ToString();
         }
 
         private void lvJobs_SelectedIndexChanged(object sender, EventArgs e)
