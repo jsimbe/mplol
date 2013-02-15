@@ -60,6 +60,19 @@ namespace OS_MP2
             s.Simulate();
             lblTime.Text = s.timeline;
             lblJobs.Text = s.jobTimeLine;
+            s.Compute();
+            List<Job> finishedJobs = s.GetFinishedJobs();
+
+            foreach (Job j in finishedJobs)
+            {
+                ListViewItem lvi = new ListViewItem(j.JobNumber.ToString());
+                ListViewItem.ListViewSubItem TAT = new ListViewItem.ListViewSubItem(lvi, j.TurnaroundTime.ToString());
+                ListViewItem.ListViewSubItem waitingTime = new ListViewItem.ListViewSubItem(lvi, j.WatingTime.ToString());
+                lvi.SubItems.Add(TAT);
+                lvi.SubItems.Add(waitingTime);
+                lvCompute.Items.Add(lvi);
+
+            }
         }
 
         private void lvJobs_SelectedIndexChanged(object sender, EventArgs e)

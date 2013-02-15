@@ -11,6 +11,11 @@ namespace OS_MP2
         public int ArrivalTime { get; set; }
         public int Cycle { get; set; }
         public string JobType { get; set; }
+        public int TimeFinished { get; set; }
+        public int WatingTime { get; set; }
+        public int ResponseTime { get; set; }
+        public int TurnaroundTime { get; set; }
+        public int OriginalCycle { get; set; }
 
         public Job(int jobNumber, int arrivalTime, int cycle, string jobType)
         {
@@ -18,6 +23,7 @@ namespace OS_MP2
             this.Cycle = cycle;
             this.JobNumber = jobNumber;
             this.JobType = jobType;
+            this.OriginalCycle = cycle;
         }
     }
 }

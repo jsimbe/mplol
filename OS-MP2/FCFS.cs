@@ -14,7 +14,7 @@ namespace OS_MP2
         //else put job on waiting queue.
         //non-preemptive. process job by arrival time.
 
-        public void Simulate(List<Job> jobList, List<Job> waitingQueue,ref Job currentJob, int time)
+        public void Simulate(List<Job> jobList, List<Job> waitingQueue, ref Job currentJob, int time)
         {
             if (jobList.Count != 0)
             {
@@ -40,6 +40,8 @@ namespace OS_MP2
                 currentJob.Cycle--;
                 if (currentJob.Cycle < 0)
                 {
+                    
+                    currentJob.TimeFinished = time;
                     currentJob = waitingQueue.First();
                     waitingQueue.Remove(waitingQueue.First());
                     currentJob.Cycle--;

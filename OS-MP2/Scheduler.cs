@@ -10,6 +10,7 @@ namespace OS_MP2
     {
         List<Job> waitingQueue = new List<Job>();
         List<Job> jobList = new List<Job>();
+        List<Job> jobsFinished = new List<Job>();
         Job currentJob;
         public string timeline = "";
         public string jobTimeLine = "";
@@ -81,6 +82,12 @@ namespace OS_MP2
                 jobTimeLine += currentJob.JobNumber.ToString() + " ";
 
                 Debug.WriteLine("current job on scheduler: " + currentJob.JobNumber + " remaining cycle: " + currentJob.Cycle);
+                if (currentJob.Cycle == 0)
+                {
+                    currentJob.TimeFinished = time;
+                    jobsFinished.Add(currentJob);
+
+                }
                 if (waitingQueue.Count > 0)
                 {
                     Debug.WriteLine("next in queue: " + waitingQueue.First().JobNumber);
@@ -90,12 +97,25 @@ namespace OS_MP2
                     Debug.WriteLine("queue empty!");
                 }
             }
-            
+       
         }
 
+        public void Compute()
+        {
+            foreach (Job j in jobsFinished)
+            {
+                j.TurnaroundTime = j.TimeFinished - j.ArrivalTime;
+                j.WatingTime = j.TurnaroundTime - j.OriginalCycle;
+            }
+        }
         public List<Job> GetJobList()
         {
             return jobList;
+        }
+
+        public List<Job> GetFinishedJobs()
+        {
+            return jobsFinished;
         }
     }
 }

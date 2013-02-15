@@ -45,6 +45,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtJobType = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.lvCompute = new System.Windows.Forms.ListView();
+            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -193,11 +198,46 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // lvCompute
+            // 
+            this.lvCompute.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.lvCompute.Location = new System.Drawing.Point(456, 12);
+            this.lvCompute.Name = "lvCompute";
+            this.lvCompute.Size = new System.Drawing.Size(294, 233);
+            this.lvCompute.TabIndex = 12;
+            this.lvCompute.UseCompatibleStateImageBehavior = false;
+            this.lvCompute.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Job Number";
+            this.columnHeader5.Width = 69;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "TAT";
+            this.columnHeader6.Width = 43;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Waiting Time";
+            this.columnHeader7.Width = 78;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Response Time";
+            this.columnHeader8.Width = 94;
+            // 
             // MP2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 478);
+            this.ClientSize = new System.Drawing.Size(762, 478);
+            this.Controls.Add(this.lvCompute);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.txtJobType);
             this.Controls.Add(this.label3);
@@ -237,6 +277,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtJobType;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.ListView lvCompute;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
     }
 }
 

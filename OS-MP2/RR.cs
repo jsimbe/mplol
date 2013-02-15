@@ -46,6 +46,11 @@ namespace OS_MP2
                         currentJob.Cycle++;
                         waitingQueue.Add(currentJob);
                     }
+                    if (currentJob.Cycle < 0)
+                    {
+                       
+                        currentJob.TimeFinished = time;
+                    }
                     currentJob = waitingQueue.First();
                     waitingQueue.Remove(waitingQueue.First());
                     currentJob.Cycle--;
