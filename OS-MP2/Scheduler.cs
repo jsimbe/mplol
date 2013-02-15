@@ -32,8 +32,18 @@ namespace OS_MP2
 
             }
         }
-         
 
+        public void waitingQueueInit()
+        {
+            waitingQueue.Clear();
+        }
+
+        public void resetTime()
+        {
+            time = 0;
+            timeline = "";
+            jobTimeLine = "";
+        }
         public void Simulate()
         {
             //hackish

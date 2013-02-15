@@ -26,6 +26,8 @@ namespace OS_MP2
         void formInit()
         {
             s.jobInit();
+            s.waitingQueueInit();
+            s.resetTime();
             lvJobs.Items.Clear();
             List<Job> jobList = s.GetJobList();
 
@@ -58,6 +60,37 @@ namespace OS_MP2
             s.Simulate();
             lblTime.Text = s.timeline;
             lblJobs.Text = s.jobTimeLine;
+        }
+
+        private void lvJobs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvJobs.SelectedItems.Count > 0)
+            {
+                Job jobSelected = lvJobs.FocusedItem.Tag as Job;
+                txtArrivalTime.Text = jobSelected.ArrivalTime.ToString();
+                txtCPUCycle.Text = jobSelected.Cycle.ToString();
+                txtJobType.Text = jobSelected.JobType.ToString();
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            Job jobSelected = lvJobs.FocusedItem.Tag as Job;
+            jobSelected.ArrivalTime = Int32.Parse(txtArrivalTime.Text);
+            jobSelected.Cycle = Int32.Parse(txtCPUCycle.Text);
+            jobSelected.JobType = txtJobType.Text;
+
+            //UI
+            lvJobs.FocusedItem.SubItems["arrivalTime"].Text = txtArrivalTime.Text;
+            lvJobs.FocusedItem.SubItems["cpuCycle"].Text = txtCPUCycle.Text;
+            lvJobs.FocusedItem.SubItems["type"].Text = txtJobType.Text;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            lblJobs.Text = "";
+            lblTime.Text = "";
+            formInit();
         }
     }
 }
