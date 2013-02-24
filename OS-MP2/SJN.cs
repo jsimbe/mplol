@@ -41,15 +41,8 @@ namespace OS_MP2
                 currentJob.Cycle--;
                 if (currentJob.Cycle < 0)
                 {
-                   
                     currentJob.TimeFinished = time;
-                    currentJob = waitingQueue.First();
-                    waitingQueue.Remove(waitingQueue.First());
-                    currentJob.Cycle--;
-                }
-                if (waitingQueue.Count > 0)
-                {
-                    if(waitingQueue.Any(j => j.JobType != "N"))
+                    if (waitingQueue.Any(j => j.JobType != "N"))
                     {
                         waitingQueue.Add(currentJob);
                         currentJob = waitingQueue.FirstOrDefault(j => j.JobType != "N");
@@ -62,18 +55,13 @@ namespace OS_MP2
                         {
                             return j1.Cycle.CompareTo(j2.Cycle);
                         });
-
-                        if (currentJob.Cycle > waitingQueue.First().Cycle)
-                        {
-                            waitingQueue.Add(currentJob);
-                            currentJob = waitingQueue.First();
-                            waitingQueue.Remove(currentJob);
-                            currentJob.Cycle--;
-                        }
+                        currentJob = waitingQueue.First();
+                        waitingQueue.Remove(waitingQueue.First());
+                        currentJob.Cycle--;
                     }
-                  
-                     
+                    
                 }
+             
 
             }
 

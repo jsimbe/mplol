@@ -119,9 +119,9 @@
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.lblJobs);
             this.panel1.Controls.Add(this.lblTime);
-            this.panel1.Location = new System.Drawing.Point(12, 354);
+            this.panel1.Location = new System.Drawing.Point(15, 333);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(646, 60);
+            this.panel1.Size = new System.Drawing.Size(646, 81);
             this.panel1.TabIndex = 4;
             // 
             // lblJobs

@@ -1,0 +1,8 @@
+E:\HACK\OS-Machine Problems\OS-MP3\OS-MP3\bin\Debug\OS-MP3.exe
+E:\HACK\OS-Machine Problems\OS-MP3\OS-MP3\bin\Debug\OS-MP3.pdb
+E:\HACK\OS-Machine Problems\OS-MP3\OS-MP3\obj\x86\Debug\OS-MP3.csprojResolveAssemblyReference.cache
+E:\HACK\OS-Machine Problems\OS-MP3\OS-MP3\obj\x86\Debug\OS_MP3.Form1.resources
+E:\HACK\OS-Machine Problems\OS-MP3\OS-MP3\obj\x86\Debug\OS_MP3.Properties.Resources.resources
+E:\HACK\OS-Machine Problems\OS-MP3\OS-MP3\obj\x86\Debug\OS-MP3.csproj.GenerateResource.Cache
+E:\HACK\OS-Machine Problems\OS-MP3\OS-MP3\obj\x86\Debug\OS-MP3.exe
+E:\HACK\OS-Machine Problems\OS-MP3\OS-MP3\obj\x86\Debug\OS-MP3.pdb
