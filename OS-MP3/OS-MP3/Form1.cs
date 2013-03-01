@@ -23,7 +23,12 @@ namespace OS_MP3
 
         void formInit()
         {
+            btnReset.Enabled = false;
+            btnSimulate.Enabled = true;
+            groupBox1.Enabled = true;
+            btnEdit.Enabled = true;
             rbScan.Checked = true;
+
             lvRequest.Items.Clear();
 
             List<Request> requestList = s.GetRequestList();
@@ -44,15 +49,18 @@ namespace OS_MP3
 
         private void btnSimulate_Click(object sender, EventArgs e)
         {
+            btnReset.Enabled = true;
+            groupBox1.Enabled = false;
+            btnEdit.Enabled = false;
+            btnSimulate.Enabled = false;
+
             requestPlot = s.Simulate();
 
-            //charts, bishes love charts!
             chart1.DataSource = requestPlot;
             chart1.Series[0].XValueMember = "TimeAccessed";
             chart1.Series[0].YValueMembers = "Track";
             chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart1.ChartAreas[0].AxisX.Minimum = 0;
-            //chart1.ChartAreas[0].AxisX.Maximum = 250;
             chart1.ChartAreas[0].AxisX.Interval = 10;
             chart1.Series[0].ToolTip = "#VALX{d}";
             chart1.Series[0].MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
@@ -81,6 +89,29 @@ namespace OS_MP3
         {
             //placeholder.
             s.OptimizeStrategy = new Scan();
+        }
+
+        private void lvRequest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvRequest.SelectedItems.Count > 0)
+            {
+                Request request = lvRequest.FocusedItem.Tag as Request;
+                txtArrivalTime.Text = request.ArrivalTime.ToString();
+                txtLocation.Text = request.Track.ToString();
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (lvRequest.SelectedItems.Count > 0)
+            {
+                Request request = lvRequest.FocusedItem.Tag as Request;
+                request.Track = Int32.Parse(txtLocation.Text);
+                request.ArrivalTime = Int32.Parse(txtArrivalTime.Text);
+
+                lvRequest.FocusedItem.SubItems["arrivalTime"].Text = txtArrivalTime.Text;
+                lvRequest.FocusedItem.SubItems["requestedTrack"].Text = txtLocation.Text;
+            }
         }
     }
 }
